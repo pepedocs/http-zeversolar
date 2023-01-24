@@ -1,6 +1,8 @@
 # http-zeversolar
 A simple Home Assistant Sensor that reports Zevercloud Plant measurements.
 
+This Sensor/app is ideal for running with your container-based Home Assistant server setup.
+
 # Install
 1. Install python modules in a python virtual environment.
 
@@ -30,4 +32,30 @@ $ python app.py
 $ cd http-zeversolar
 $ docker-compose build
 $ docker-compose up
+```
+
+# Example Home Assitant docker compose set up
+```
+version: "3.9"
+services:
+  ha:
+    image: homeassistant/home-assistant:stable
+    ports:
+      - "8123:8123"
+    environment:
+      TZ: "Australia/Brisbane"
+    volumes:
+      - ./homeassistant/config:/config
+    restart: unless-stopped
+  http-zeversolar:
+    build: .
+    restart: unless-stopped
+    environment:
+      - API_KEY=${API_KEY}
+      - APP_KEY=${APP_KEY}
+      - APP_SECRET=${APP_SECRET}
+      - HA_API_KEY=${HA_API_KEY}
+      - HA_API_URL=${HA_API_URL}
+
+
 ```
