@@ -35,6 +35,13 @@ $ docker-compose up
 ```
 
 # Example Home Assitant docker compose set up
+1. Clone https://github.com/pepedocs/http-zeversolar at the same directory level where your homeassistant docker compose is located.
+
+```
+$ git clone https://github.com/pepedocs/http-zeversolar
+```
+
+2. Update your home assistant docker compose with http-zeversolar service.
 ```
 version: "3.9"
 services:
@@ -48,7 +55,7 @@ services:
       - ./homeassistant/config:/config
     restart: unless-stopped
   http-zeversolar:
-    build: .
+    build: ./http-zeversolar
     restart: unless-stopped
     environment:
       - API_KEY=${API_KEY}
