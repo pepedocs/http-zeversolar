@@ -30,12 +30,15 @@ async def main():
 
         logger.info(f"Overview: {overview}")
 
+        power_status = "on" if overview["online"] is True else "off"
         payload = {
             "state": overview["yield"]["today"],
             "attributes": {
                 "unit_of_measurement": "kwh",
                 "friendly_name": "Solar Yield Today",
                 "state_class": "measurement",
+                "power": overview["power"],
+                "power_status": power_status,
             },
         }
         headers = {
