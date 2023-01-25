@@ -36,7 +36,7 @@ async def main():
             "attributes": {
                 "unit_of_measurement": "kWh",
                 "friendly_name": "Solar Yield Today",
-                "power": f'{overview["power"]}kW',
+                "power": f'{overview["power"]} kW',
                 "power_status": power_status,
             },
         }
