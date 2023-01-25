@@ -34,10 +34,9 @@ async def main():
         payload = {
             "state": overview["yield"]["today"],
             "attributes": {
-                "unit_of_measurement": "kwh",
+                "unit_of_measurement": "kWh",
                 "friendly_name": "Solar Yield Today",
-                "state_class": "measurement",
-                "power": overview["power"],
+                "power": f'{overview["power"]}kW',
                 "power_status": power_status,
             },
         }
