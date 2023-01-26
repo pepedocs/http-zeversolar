@@ -30,7 +30,7 @@ async def main():
 
         logger.info(f"Overview: {overview}")
 
-        power_status = "on" if overview["online"] is True else "off"
+        power_status = "off" if overview["online"] is False else "on"
         payload = {
             "state": overview["yield"]["today"],
             "attributes": {
